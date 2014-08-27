@@ -9,12 +9,12 @@ import Control.Monad
 --無限リストを用いて，リストの長さが試行回数．
 main = do
   gen <- newStdGen
-  let cell = takeWhile (\x -> x/="STAP") $ cells (randomRs ('A','Z') gen)
+  let cell = takeWhile (\x -> x/="STAP") $ cells (randomRs ('A','Z') gen) --STAPが見つかるまでのリスト
   print $ cell
-  let n = length cell
+  let n = length cell --長さが試行回数
   putStrLn $ "You found STAP Cell to " ++ show n ++ "th !"
 
-cells :: String -> [String]
+cells :: String -> [String] --無限リストを生成する関数
 cells cell = (take 4 cell) : cells (drop 4 cell)
 
 
